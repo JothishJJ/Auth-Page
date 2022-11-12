@@ -65,7 +65,7 @@ export default function Login() {
             </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
-            Don't have an account? <Link href="/Signup">Sign Up</Link>
+            Don&#39;t have an account? <Link href="/Signup">Sign Up</Link>
           </div>
         </div>
       </Container>

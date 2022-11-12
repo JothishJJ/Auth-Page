@@ -61,7 +61,12 @@ export default function Login() {
                   Log In
                 </Button>
               </Form>
-              {error && <Alert variant="danger">{error}</Alert>}
+              {error && (
+                <>
+                  <br />
+                  <Alert variant="danger">{error}</Alert>
+                </>
+              )}
             </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">

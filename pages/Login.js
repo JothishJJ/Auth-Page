@@ -2,6 +2,7 @@ import { Form, Button, Card, Container, Alert } from "react-bootstrap";
 
 import Head from "next/head";
 import Link from "next/link";
+import Router from "next/router";
 import { useRef, useState } from "react";
 
 import { useAuth } from "../lib/AuthContext";
@@ -21,6 +22,7 @@ export default function Login() {
     try {
       setError("");
       await login(emailRef.current.value, passwordRef.current.value);
+      Router.push("/");
     } catch {
       setError("Failed to sign in");
     }

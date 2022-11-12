@@ -5,6 +5,9 @@ import Link from "next/link";
 import Router from "next/router";
 import { useRef, useState } from "react";
 
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../lib/firebase";
+
 import { useAuth } from "../lib/AuthContext";
 
 export default function Signup() {
@@ -16,6 +19,17 @@ export default function Signup() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [user, loadingAuth] = useAuthState(auth);
+
+  if (user) {
+    Router.push("/");
+    return <></>;
+  }
+
+  if (loadingAuth) {
+    return <></>;
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();

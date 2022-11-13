@@ -91,11 +91,11 @@ export default function ForgotPassword() {
               <div className="w-100 text-center mt-3">
                 <Link href="/Login">Login</Link>
               </div>
+              <div className="w-100 text-center mt-2">
+                Don&#39;t have an account? <Link href="/Signup">Sign Up</Link>
+              </div>
             </Card.Body>
           </Card>
-          <div className="w-100 text-center mt-2">
-            Don&#39;t have an account? <Link href="/Signup">Sign Up</Link>
-          </div>
         </div>
       </Container>
     </>

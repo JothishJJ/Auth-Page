@@ -99,11 +99,11 @@ export default function Signup() {
                   <Alert variant="danger">{error}</Alert>
                 </>
               )}
+              <div className="w-100 text-center mt-2">
+                Already have an account? <Link href="/Login">Log In</Link>
+              </div>
             </Card.Body>
           </Card>
-          <div className="w-100 text-center mt-2">
-            Already have an account? <Link href="/Login">Log In</Link>
-          </div>
         </div>
       </Container>
     </>

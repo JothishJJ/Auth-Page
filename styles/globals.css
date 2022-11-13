@@ -6,3 +6,7 @@ a {
 .link {
   color: white !important;
 }
+
+.background {
+  background-image: url("/background.svg");
+}

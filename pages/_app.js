@@ -6,7 +6,9 @@ import { AuthProvider } from "../lib/AuthContext";
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <div className="background">
+        <Component {...pageProps} />
+      </div>
     </AuthProvider>
   );
 }

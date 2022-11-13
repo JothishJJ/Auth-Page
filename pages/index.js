@@ -41,14 +41,14 @@ export default function Home() {
 
   return (
     <>
-      <div>
+      <div style={{ height: "960px" }}>
         <Head>
           <title>AuthPage</title>
         </Head>
         <Container>
-          <h1>Dashboard</h1>
           <Card>
             <Card.Body>
+              <h1>Dashboard</h1>
               <h2 className="text-center" mb-4>
                 Profile
               </h2>
@@ -60,17 +60,17 @@ export default function Home() {
               >
                 Update Profile
               </Link>
+              <div className="w-100 text-center mt-2">
+                <Button
+                  variant="link"
+                  onClick={handleLogout}
+                  className={styles.link}
+                >
+                  Log Out
+                </Button>
+              </div>
             </Card.Body>
           </Card>
-          <div className="w-100 text-center mt-2">
-            <Button
-              variant="link"
-              onClick={handleLogout}
-              className={styles.link}
-            >
-              Log Out
-            </Button>
-          </div>
         </Container>
       </div>
     </>

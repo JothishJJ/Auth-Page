@@ -12,6 +12,8 @@ import { Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../lib/AuthContext";
 import { auth } from "../lib/firebase";
 
+import Loading from "../lib/Loading";
+
 export default function Home() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
@@ -19,11 +21,11 @@ export default function Home() {
 
   if (!user) {
     Router.push("/Login");
-    return <></>;
+    return <Loading />;
   }
 
   if (loading) {
-    return <></>;
+    return <Loading />;
   }
 
   async function handleLogout() {

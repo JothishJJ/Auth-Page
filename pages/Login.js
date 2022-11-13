@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebase";
 import { useAuth } from "../lib/AuthContext";
 
+import Loading from "../lib/Loading";
+
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -22,11 +24,11 @@ export default function Login() {
 
   if (user) {
     Router.push("/");
-    return <></>;
+    return <Loading />;
   }
 
   if (loadingAuth) {
-    return <></>;
+    return <Loading />;
   }
 
   async function handleSubmit(e) {
@@ -46,7 +48,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Sign Up</title>
+        <title>Log In</title>
       </Head>
       <Container
         className="d-flex align-items-center justify-content-center"

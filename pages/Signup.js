@@ -10,6 +10,8 @@ import { auth } from "../lib/firebase";
 
 import { useAuth } from "../lib/AuthContext";
 
+import Loading from "../lib/Loading";
+
 export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -24,11 +26,11 @@ export default function Signup() {
 
   if (user) {
     Router.push("/");
-    return <></>;
+    return <Loading />;
   }
 
   if (loadingAuth) {
-    return <></>;
+    return <Loading />;
   }
 
   async function handleSubmit(e) {

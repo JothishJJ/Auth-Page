@@ -11,13 +11,13 @@ import { useAuth } from "../lib/AuthContext";
 
 import Loading from "../lib/Loading";
 
-export default function Login() {
+export default function ForgotPassword() {
   const emailRef = useRef();
-  const passwordRef = useRef();
 
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
 
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [user, loadingAuth] = useAuthState(auth);
@@ -35,12 +35,13 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      setMessage("");
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      Router.push("/");
+      await resetPassword(emailRef.current.value);
+      setMessage("Go check your inbox to reset your password.");
     } catch {
-      setError("Failed to sign in");
+      setError("Failed to reset password");
     }
 
     setLoading(false);
@@ -49,7 +50,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Log In</title>
+        <title>Reset Password</title>
       </Head>
       <Container
         className="d-flex align-items-center justify-content-center"
@@ -58,25 +59,27 @@ export default function Login() {
         <div className="w-100" style={{ maxWidth: "400px" }}>
           <Card>
             <Card.Body>
-              <h2 className="text-center md-4">Log In</h2>
+              <h2 className="text-center md-4">Reset Password</h2>
+              {message && (
+                <>
+                  <br />
+                  <Alert variant="success">{message}</Alert>
+                </>
+              )}
               <Form onSubmit={handleSubmit}>
                 <Form.Group id="email">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" ref={emailRef} required />
                 </Form.Group>
                 <br />
-                <Form.Group id="password">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" ref={passwordRef} required />
-                </Form.Group>
-                <br />
+
                 <Button
                   disabled={loading}
                   type="submit"
                   className="w-100"
                   variant="success"
                 >
-                  Log In
+                  Reset Password
                 </Button>
               </Form>
               {error && (
@@ -86,7 +89,7 @@ export default function Login() {
                 </>
               )}
               <div className="w-100 text-center mt-3">
-                <Link href="/forgot-password">Forgot Password?</Link>
+                <Link href="/Login">Login</Link>
               </div>
             </Card.Body>
           </Card>
